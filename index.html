@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rock-paper-sizors</title>
+  </head>
+  <body>
+    <button id="b1" onclick="rock()">Rock</button>
+    <button id="b2" onclick="paper()">Paper</button>
+    <button id="b3" onclick="sizors()">Sizors</button>
+    <script>
+      function rock() {
+        document.getElementById("b1").innerHTML = "You chose rock";
+        computerPlay();
+      }
+
+      function paper() {
+        document.getElementById("b2").innerHTML = "You chose paper";
+        computerPlay();
+      }
+
+      function sizors() {
+        document.getElementById("b3").innerHTML = "You chose sizors";
+        computerPlay();
+      }
+
+      function computerPlay() {
+        let random = ["rock", "paper", "sizors"];
+        console.log(random[Math.floor(Math.random() * 3)]);
+        //console.log(random);
+      }
+
+      console.log(random);
+    </script>
+  </body>
+</html>
