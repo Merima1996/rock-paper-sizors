@@ -9,28 +9,44 @@
     <button id="b2" onclick="paper()">Paper</button>
     <button id="b3" onclick="sizors()">Sizors</button>
     <script>
+      let choices = ["rock", "paper", "scissors"];
+      let pChoice;
+      let cChoice;
+
       function rock() {
         document.getElementById("b1").innerHTML = "You chose rock";
+        pChoice = choices[0];
         computerPlay();
       }
 
       function paper() {
         document.getElementById("b2").innerHTML = "You chose paper";
+        pChoice = choices[1];
         computerPlay();
       }
 
       function sizors() {
         document.getElementById("b3").innerHTML = "You chose sizors";
+        pChoice = choices[2];
         computerPlay();
       }
 
       function computerPlay() {
-        let random = ["rock", "paper", "sizors"];
-        console.log(random[Math.floor(Math.random() * 3)]);
-        //console.log(random);
-      }
+        cChoice = choices[Math.floor(Math.random() * 3)];
+        console.log(cChoice);
 
-      console.log(random);
+        if (pChoice == cChoice) {
+          alert("It's a draw!");
+        } else if (
+          (pChoice == "rock" && cChoice == "paper") ||
+          (pChoice == "paper" && cChoice == "scissors") ||
+          (pChoice == "scissors" && cChoice == "rock")
+        ) {
+          alert("Computer won!");
+        } else {
+          alert("Player won!");
+        }
+      }
     </script>
   </body>
 </html>
