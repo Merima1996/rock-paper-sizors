@@ -7,46 +7,95 @@
   <body>
     <button id="b1" onclick="rock()">Rock</button>
     <button id="b2" onclick="paper()">Paper</button>
-    <button id="b3" onclick="sizors()">Sizors</button>
+    <button id="b3" onclick="scissors()">Scissors</button>
     <script>
       let choices = ["rock", "paper", "scissors"];
       let pChoice;
       let cChoice;
+      let roundwinner;
+      let playerScore = 0;
+      let computerScore = 0;
+      let score = 0;
 
       function rock() {
-        document.getElementById("b1").innerHTML = "You chose rock";
+        document.getElementById("b1").innerHTML;
         pChoice = choices[0];
-        computerPlay();
+        cPlay();
       }
 
       function paper() {
-        document.getElementById("b2").innerHTML = "You chose paper";
+        document.getElementById("b2").innerHTML;
         pChoice = choices[1];
-        computerPlay();
+        cPlay();
       }
 
-      function sizors() {
-        document.getElementById("b3").innerHTML = "You chose sizors";
+      function scissors() {
+        document.getElementById("b3").innerHTML;
         pChoice = choices[2];
-        computerPlay();
+        cPlay();
       }
 
-      function computerPlay() {
+      function cPlay() {
         cChoice = choices[Math.floor(Math.random() * 3)];
         console.log(cChoice);
+        round();
+      }
 
+      function round() {
         if (pChoice == cChoice) {
-          alert("It's a draw!");
+          roundwinner = "It's a tie";
+          score++;
         } else if (
           (pChoice == "rock" && cChoice == "paper") ||
           (pChoice == "paper" && cChoice == "scissors") ||
           (pChoice == "scissors" && cChoice == "rock")
         ) {
-          alert("Computer won!");
+          roundwinner = "computer";
+          computerScore++;
+          score++;
         } else {
-          alert("Player won!");
+          roundwinner = "player";
+          playerScore++;
+          score++;
+        }
+        console.log("Round:", score);
+        console.log("Player: ", playerScore, " Computer: ", computerScore);
+        isGameOver();
+      }
+
+      function isGameOver() {
+        //if (playerScore === 5 || computerScore === 5) {
+        //  return winner();
+        //}
+
+        if (score === 5) {
+          return winner();
         }
       }
+
+      function winner() {
+        if (playerScore > computerScore) {
+          alert("Player won!");
+        } else if (computerScore > playerScore) {
+          alert("Computer won!");
+        }
+        score = 0;
+        playerScore = 0;
+        computerScore = 0;
+      }
+      //function isGameOver() {
+      // if (score === 5) {
+      //   return winner();
+      //}
+      //}
+
+      //function winner() {
+      // if (playerScore > 3) {
+      //   alert("Player won!");
+      // } else if (computerScore > 3) {
+      //  alert("Computer won!");
+      // }
+      // }
     </script>
   </body>
 </html>
