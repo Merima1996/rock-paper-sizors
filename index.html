@@ -8,6 +8,8 @@
     <button id="b1" onclick="rock()">Rock</button>
     <button id="b2" onclick="paper()">Paper</button>
     <button id="b3" onclick="scissors()">Scissors</button>
+
+    <p id="info"></p>
     <script>
       let choices = ["rock", "paper", "scissors"];
       let pChoice;
@@ -16,6 +18,7 @@
       let playerScore = 0;
       let computerScore = 0;
       let score = 0;
+      const scoreInfo = document.getElementById("info").innerHTML;
 
       function rock() {
         document.getElementById("b1").innerHTML;
@@ -43,7 +46,7 @@
 
       function round() {
         if (pChoice == cChoice) {
-          roundwinner = "It's a tie";
+          roundwinner = "tie";
           score++;
         } else if (
           (pChoice == "rock" && cChoice == "paper") ||
@@ -58,16 +61,14 @@
           playerScore++;
           score++;
         }
-        console.log("Round:", score);
-        console.log("Player: ", playerScore, " Computer: ", computerScore);
+
+        //console.log("Round:", score);
+        //console.log("Player: ", playerScore, " Computer: ", computerScore);
         isGameOver();
+        updateScore();
       }
 
       function isGameOver() {
-        //if (playerScore === 5 || computerScore === 5) {
-        //  return winner();
-        //}
-
         if (score === 5) {
           return winner();
         }
@@ -78,24 +79,23 @@
           alert("Player won!");
         } else if (computerScore > playerScore) {
           alert("Computer won!");
+        } else {
+          alert("It's a tie");
         }
         score = 0;
         playerScore = 0;
         computerScore = 0;
       }
-      //function isGameOver() {
-      // if (score === 5) {
-      //   return winner();
-      //}
-      //}
 
-      //function winner() {
-      // if (playerScore > 3) {
-      //   alert("Player won!");
-      // } else if (computerScore > 3) {
-      //  alert("Computer won!");
-      // }
-      // }
+      function updateScore() {
+        if (roundwinner === "tie") {
+          document.getElementById("info").innerHTML = "It's a tie";
+        } else if (roundwinner === "player") {
+          document.getElementById("info").innerHTML = "You won";
+        } else if (roundwinner === "computer") {
+          document.getElementById("info").innerHTML = "You lost";
+        }
+      }
     </script>
   </body>
 </html>
